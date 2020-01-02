@@ -8,7 +8,7 @@ module.exports = {
     noEmitOnErrors: true
   },
   entry: {
-    vendor: [
+    portlet: [
       'zone.js/dist/zone',
       "@angular/animations",
       "@angular/common",
@@ -22,12 +22,12 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, 'dll'),
-    filename: "[name].js",
+    filename: "[name]-dll.js",
     library: "[name]"
   },
   plugins: [
     new webpack.DllPlugin({
-      path: path.resolve("dll", "[name]-manifest.json"),
+      path: path.resolve("dll", "[name]-dll-manifest.json"),
       name: "[name]"
     })
   ]
