@@ -9,7 +9,7 @@ module.exports = {
   },
   entry: {
     portlet: [
-      'zone.js/dist/zone',
+      "zone.js/dist/zone",
       "@angular/animations",
       "@angular/common",
       "@angular/core",
