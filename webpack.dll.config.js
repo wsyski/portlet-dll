@@ -1,5 +1,6 @@
-var webpack = require("webpack");
-var path = require("path");
+const webpack = require("webpack");
+const path = require("path");
+const pkg = require("./package.json");
 
 module.exports = {
   mode: "development",
@@ -21,13 +22,13 @@ module.exports = {
     ]
   },
   output: {
-    path: path.join(__dirname, 'dll'),
+    path: path.join(__dirname, "dll", pkg.name),
     filename: "[name]-dll.js",
     library: "[name]"
   },
   plugins: [
     new webpack.DllPlugin({
-      path: path.resolve("dll", "[name]-dll-manifest.json"),
+      path: path.join("dll", pkg.name, "[name]-dll-manifest.json"),
       name: "[name]"
     })
   ]
