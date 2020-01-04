@@ -6,11 +6,11 @@
 		"*": ["**/*"]
 	},
 
-	"sources": ["package.json", "dll", "src"],
+	"sources": ["package.json", "dll", "jar"],
 	"rules": [
 		{
 			"description": "Transform Liferay's source files",
-			"test": "^src/.*\\.js$",
+			"test": "^jar/.*\\.js$",
 			"use": [
 				{
 					"loader": "babel-loader",
