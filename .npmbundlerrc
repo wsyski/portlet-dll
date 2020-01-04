@@ -24,13 +24,13 @@
 			"description": "Transform webpack JavaScript bundles",
 			"test": "^dll/[^/]+/.*-dll\\.js$",
 			"use": [
-			  {
-        	"loader": "liferay-npm-build-support/lib/loader/replace-regexp",
-          "options": {
-        		"pattern": "$",
-        	  "replacement": "\nreturn portlet;\n"
-        	}
-        },
+			    {
+        	        "loader": "liferay-npm-build-support/lib/loader/replace-regexp",
+                    "options": {
+        		         "pattern": "$",
+        	             "replacement": "\nreturn portlet;\n"
+        	        }
+                },
 				{
 					"loader": "liferay-npm-build-support/lib/loader/wrap-webpack-bundle",
 					"options": {
