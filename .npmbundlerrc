@@ -1,62 +1,71 @@
 {
-	"output": "build.liferay/jar",
-
-	"ignore": ["**/*"],
-	"exclude": {
-		"*": ["**/*"]
-	},
-
-	"sources": ["package.json", "dll", "jar"],
-	"rules": [
-		{
-			"description": "Transform Liferay's source files",
-			"test": "^jar/.*\\.js$",
-			"use": [
-				{
-					"loader": "babel-loader",
-					"options": {
-						"presets": ["babel-preset-liferay-standard"]
-					}
-				}
-			]
-		},
-		{
-			"description": "Transform webpack JavaScript bundles",
-			"test": "^dll/[^/]+/.*-dll\\.js$",
-			"use": [
-			    {
-        	        "loader": "liferay-npm-build-support/lib/loader/replace-regexp",
-                    "options": {
-        		         "pattern": "$",
-        	             "replacement": "\nreturn portlet;\n"
-        	        }
-                },
-				{
-					"loader": "liferay-npm-build-support/lib/loader/wrap-webpack-bundle",
-					"options": {
-						"removePrefix": "dll/"
-					}
-				},
-				{
-					"loader": "liferay-npm-build-support/lib/loader/namespace-webpack",
-					"options": {}
-				}
-			]
-		},
-		{
-			"description": "Remove content hash from webpack bundles",
-			"test": "",
-			"include": [
-				"^dll/[^/]+/.*-dll\\.js$"
-			],
-			"use": ["liferay-npm-build-support/lib/loader/remove-webpack-hash"]
-		}
-	],
-
-	"create-jar": {
-		"output-dir": "build.liferay",
-		"features": {
-			"js-extender": false
-		}
-	}
+  "output": "build.liferay/jar",
+  "ignore": [
+    "**/*"
+  ],
+  "exclude": {
+    "*": [
+      "**/*"
+    ]
+  },
+  "sources": [
+    "package.json",
+    "dll",
+    "jar"
+  ],
+  "rules": [
+    {
+      "description": "Transform Liferay's source files",
+      "test": "^jar/.*\\.js$",
+      "use": [
+        {
+          "loader": "babel-loader",
+          "options": {
+            "presets": [
+              "babel-preset-liferay-standard"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "description": "Transform webpack JavaScript bundles",
+      "test": "^dll/[^/]+/.*-dll\\.js$",
+      "use": [
+        {
+          "loader": "liferay-npm-build-support/lib/loader/replace-regexp",
+          "options": {
+            "pattern": "$",
+            "replacement": "\nreturn portlet;\n"
+          }
+        },
+        {
+          "loader": "liferay-npm-build-support/lib/loader/wrap-webpack-bundle",
+          "options": {
+            "removePrefix": "dll/"
+          }
+        },
+        {
+          "loader": "liferay-npm-build-support/lib/loader/namespace-webpack",
+          "options": {}
+        }
+      ]
+    },
+    {
+      "description": "Remove content hash from webpack bundles",
+      "test": "",
+      "include": [
+        "^dll/[^/]+/.*-dll\\.js$"
+      ],
+      "use": [
+        "liferay-npm-build-support/lib/loader/remove-webpack-hash"
+      ]
+    }
+  ],
+  "create-jar": {
+    "output-dir": "build.liferay",
+    "features": {
+      "js-extender": false
+    }
+  }
 }
