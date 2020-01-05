@@ -67,5 +67,8 @@
     "features": {
       "js-extender": false
     }
-  }
+  },
+  "dump-report": true,
+  "process-serially": false,
+  "verbose": true
 }
